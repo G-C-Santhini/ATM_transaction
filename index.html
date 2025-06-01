@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cardless ATM</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Cardless ATM</h1>
+
+    <!-- Language Selection -->
+    <label for="language">Language / மொழி:</label>
+    <select id="language" onchange="setLanguage()">
+      <option value="en">English</option>
+      <option value="ta">தமிழ்</option>
+    </select>
+
+    <!-- Face Authentication -->
+    <div class="section" id="face-section">
+      <h2 id="face-title">Face Authentication</h2>
+      <video id="video" autoplay></video><br/>
+      <button id="face-btn" onclick="captureFace()">Capture Face</button>
+      <p id="face-status"></p>
+      <canvas id="canvas" style="display:none;"></canvas>
+    </div>
+
+    <!-- Fingerprint Upload -->
+    <div class="section hidden" id="fingerprint-section">
+      <h2 id="fp-title">Upload Fingerprint</h2>
+      <input type="file" id="fingerprint" accept="image/*" /><br/>
+      <button id="fp-btn" onclick="verifyFingerprint()">Verify Fingerprint</button>
+      <p id="fp-status"></p>
+    </div>
+
+    <!-- Login -->
+    <div class="section hidden" id="login-section">
+      <h2 id="login-title">Login</h2>
+      <input type="text" id="userid" placeholder="User ID" /><br/>
+      <input type="password" id="pin" placeholder="PIN" /><br/>
+      <button id="login-btn" onclick="login()">Login</button>
+      <p id="login-status"></p>
+    </div>
+
+    <!-- ATM Actions -->
+    <div class="section hidden" id="atm-section">
+      <h2 id="atm-title">ATM Services</h2>
+      <button id="deposit-btn" onclick="deposit()">Deposit</button>
+      <button id="withdraw-btn" onclick="withdraw()">Withdraw</button>
+      <button id="balance-btn" onclick="checkBalance()">Check Balance</button>
+      <button id="history-btn" onclick="viewHistory()">Transaction History</button>
+      <p id="atm-status"></p>
+      <div id="history"></div>
+    </div>
+  </div>
+
+  <script src="ATM.js"></script>
+</body>
+</html>
